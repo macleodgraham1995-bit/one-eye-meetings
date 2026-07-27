@@ -552,6 +552,7 @@ select option { background: var(--panel); }
 
 <script>
 const STORE='oei_meetings', SKEY='oei_settings', KKEY='oei_aai_key', PKEY='oei_proxy';
+const DEFAULT_PROXY='https://one-eye-proxy.macleodgraham1995.workers.dev';  // pre-set so the shared link works with zero setup
 const APP_VERSION='3.0';
 let currentMeeting=null, selectedFile=null, attendees=[];
 let processing=false, lastSavedId=null;
@@ -679,7 +680,7 @@ function boot() {
   const key = ls(KKEY);
   if (key) { document.getElementById('keyInput').value=key; document.getElementById('settingsKey').value=key; }
   const proxy = ls(PKEY);
-  if (proxy) document.getElementById('sProxy').value = proxy;
+  document.getElementById('sProxy').value = proxy || DEFAULT_PROXY;
   refreshKeyPill();
   const s = lsj(SKEY)||{};
   if (s.company)   document.getElementById('sCompany').value  = s.company;
@@ -714,7 +715,7 @@ function refreshKeyPill(){
   else { document.getElementById('keyBar').style.display=''; const ok=(getKey()||'').length>10; el.textContent=ok?'✓ Key saved':'Not set'; el.className='key-pill '+(ok?'key-set':'key-unset'); }
 }
 function getKey()   { return ls(KKEY)||''; }
-function getProxy() { return (ls(PKEY)||'').trim().replace(/\/+$/,''); }
+function getProxy() { return (ls(PKEY)||DEFAULT_PROXY).trim().replace(/\/+$/,''); }
 
 function renderChips() {
   document.getElementById('attendeeChips').innerHTML = attendees.map((a,i)=>{
