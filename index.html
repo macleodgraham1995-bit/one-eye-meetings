@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- One Eye Industries Meeting Intelligence v3.3 — HARDENED BUILD 2026-07-27 (multi-slot safety, restart guard, zero-byte trap, auto-save, crash-mirror; robust analysis JSON parsing; settings-driven speakers/owners, no hardcoded names or branding)
+<!-- One Eye Industries Meeting Intelligence v3.6 — HARDENED BUILD 2026-07-28 (multi-slot safety, restart guard, zero-byte trap, auto-save, crash-mirror; robust analysis JSON parsing; settings-driven speakers/owners, no hardcoded names or branding)
      Safeguards: IndexedDB audio+meeting persistence with recovery banner · auto-process ·
      auto-save to device AND shared team log · leave-page warning · cloud/local MERGE sync
      (never overwrites local-only meetings) · storage-quota-safe writes · dual mode
@@ -290,7 +290,7 @@ select option { background: var(--panel); }
   <div class="brand">
     <div class="brand-mark"><img src="data:image/png;base64,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" alt="One Eye Industries" style="height:42px;width:auto;object-fit:contain;display:block;"></div>
     <div>
-      <div class="brand-sub">Meeting Intelligence · v3.5</div>
+      <div class="brand-sub">Meeting Intelligence · v3.6</div>
     </div>
   </div>
   <button class="btn btn-ghost btn-sm" onclick="exportAll()">⬇ Export</button>
@@ -335,8 +335,27 @@ select option { background: var(--panel); }
       </div>
     </div>
     <div class="field">
+      <label class="lbl">Customer / Account <span style="color:#f87171;">required</span></label>
+      <select id="mAccount" onchange="onAccountChange()">
+        <option value="">Choose the customer this meeting is with...</option>
+      </select>
+      <input type="text" id="mAccountOther" class="hidden" placeholder="Type the customer name" style="margin-top:8px;" />
+      <div class="lbl" style="margin-top:6px;opacity:.7;font-weight:400;text-transform:none;letter-spacing:0;">
+        This is what files the meeting against the right account. Pick the main customer even if others come up.
+      </div>
+    </div>
+    <div class="field">
       <label class="lbl">Title / Focus (optional)</label>
       <input type="text" id="mTitle" placeholder="e.g. Shawnessy acquisition, Q3 pipeline…" />
+    </div>
+    <div class="field" style="margin-top:4px;padding:12px 14px;border:1px solid rgba(255,255,255,.10);border-radius:10px;background:rgba(255,255,255,.03);">
+      <label style="display:flex;gap:10px;align-items:flex-start;cursor:pointer;">
+        <input type="checkbox" id="mConsent" style="margin-top:3px;width:18px;height:18px;flex:none;accent-color:#4f46e5;">
+        <span style="font-size:13px;line-height:1.5;">
+          <b>Everyone present has been told this is being recorded and has agreed.</b><br>
+          <span style="opacity:.7;font-size:12px;">Required. Consent rules differ by country and several are strict, so this is recorded against the meeting.</span>
+        </span>
+      </label>
     </div>
   </div>
 
@@ -416,6 +435,7 @@ select option { background: var(--panel); }
   <div id="statusEl" class="hidden status-bar s-info"></div>
 
   <div id="resultsWrap" class="hidden" style="margin-top:22px;">
+  <div id="bleedWarn" class="hidden" style="margin:0 0 14px;padding:12px 14px;border:1px solid #b45309;background:rgba(180,83,9,.15);border-radius:10px;font-size:13px;line-height:1.5;color:#fbbf24;"></div>
     <div class="card-title" style="margin-bottom:12px;">Meeting Record</div>
 
     <div class="result-block">
@@ -558,9 +578,9 @@ select option { background: var(--panel); }
 <script>
 const STORE='oei_meetings', SKEY='oei_settings', KKEY='oei_aai_key', PKEY='oei_proxy', ACODE='oei_acode';
 // SECURITY (2a): team access code sent with every Worker call, so the shared log + transcription require the code.
-(function(){ const _f=window.fetch.bind(window); window.fetch=function(u,o){ o=o||{}; let url=''; try{ url=(typeof u==='string')?u:(u&&u.url)||''; const c=(localStorage.getItem(ACODE)||'').trim(); if(c&&url.indexOf('workers.dev')>=0){ o.headers=Object.assign({},o.headers||{},{'x-access-token':c}); } }catch(e){} const isW=url.indexOf('workers.dev')>=0; return _f(u,o).then(function(r){ try{ if(r&&r.status===401&&isW&&!window.__acodePrompting){ window.__acodePrompting=true; setTimeout(function(){ try{ var cur=localStorage.getItem(ACODE)||''; var v=prompt('🔒 Team access code required.\n\nThis app is secured for your team. Enter the access code (ask Graham if you do not have it):',cur); if(v!==null){ localStorage.setItem(ACODE,v.trim()); var f=document.getElementById('sAcode'); if(f) f.value=v.trim(); alert('Code saved — tap the button again to retry.'); } }finally{ window.__acodePrompting=false; } },30); } }catch(e){} return r; }); }; })();
+(function(){ const _f=window.fetch.bind(window); function ask(){ if(window.__acodePrompting) return; window.__acodePrompting=true; setTimeout(function(){ try{ var cur=localStorage.getItem(ACODE)||''; var v=prompt('🔒 Team access code required.\n\nThis app is secured for your team. Enter the access code (ask Graham if you do not have it):',cur); if(v!==null){ localStorage.setItem(ACODE,v.trim()); var f=document.getElementById('sAcode'); if(f) f.value=v.trim(); alert('Code saved — tap the button again to retry.'); } }finally{ window.__acodePrompting=false; } },30); } window.fetch=function(u,o){ o=o||{}; let url=''; try{ url=(typeof u==='string')?u:(u&&u.url)||''; const c=(localStorage.getItem(ACODE)||'').trim(); if(c&&url.indexOf('workers.dev')>=0){ o.headers=Object.assign({},o.headers||{},{'x-access-token':c}); } }catch(e){} const isW=url.indexOf('workers.dev')>=0; return _f(u,o).then(function(r){ try{ if(r&&r.status===401&&isW&&!window.__acodePrompting){ r.clone().text().then(function(b){ if(((b||'').toLowerCase().indexOf('access code')>=0)) ask(); }).catch(function(){}); } }catch(e){} return r; }); }; })();
 const DEFAULT_PROXY='https://one-eye-proxy.macleodgraham1995.workers.dev';  // pre-set so the shared link works with zero setup
-const APP_VERSION='3.3';
+const APP_VERSION='3.6';
 // ── PER-APP BRANDING — the ONLY place a company name is hardcoded ──
 const APP_BRAND='One Eye Industries';       // header + report footer
 const APP_COMPANY='One Eye Industries';   // report masthead fallback
@@ -687,6 +707,7 @@ window.addEventListener('beforeunload',function(e){
 
 function boot() {
   document.getElementById('mDate').value = today();
+  try{ loadAccountList(); }catch(e){}      // v3.6: the customer picker, from the live board
   const key = ls(KKEY);
   if (key) { document.getElementById('keyInput').value=key; document.getElementById('settingsKey').value=key; }
   const proxy = ls(PKEY);
@@ -727,6 +748,84 @@ function refreshKeyPill(){
   else { document.getElementById('keyBar').style.display=''; const ok=(getKey()||'').length>10; el.textContent=ok?'✓ Key saved':'Not set'; el.className='key-pill '+(ok?'key-set':'key-unset'); }
 }
 function getKey()   { return ls(KKEY)||''; }
+
+/* ══════════ v3.6 (28 Jul 2026): who is this meeting with, and did they agree? ══
+   Two problems this closes.
+   1. Every meeting used to save as "Customer Meeting" with no attendees, so the
+      Command Center could not file it against anything and each one had to be
+      placed by hand.
+   2. Recording legality. Consent is one-party in Canada but ALL-party in the UAE
+      (Article 44, cybercrimes law, up to 6 months and AED 150k-500k), in 12 US
+      states, and in parts of the EU. Capturing the confirmation turns a habit
+      into a record.
+   The gate runs BEFORE getUserMedia, so it can never interfere with a recording
+   that is already running, and stopping is never gated. ══════════════════════ */
+const ACCKEY='oei_accounts_cache';
+function accCache(){ try{ return JSON.parse(ls(ACCKEY)||'[]'); }catch(e){ return []; } }
+async function loadAccountList(){
+  const sel=document.getElementById('mAccount'); if(!sel) return;
+  let list=accCache();
+  try{
+    const r=await fetch(getProxy()+'/accounts?t='+Date.now());
+    if(r.ok){
+      const d=await r.json();
+      if(d && Array.isArray(d.items) && d.items.length){
+        list=d.items.filter(a=>!a.archived).map(a=>({id:a.id,name:a.name}));
+        localStorage.setItem(ACCKEY, JSON.stringify(list));
+      }
+    }
+  }catch(e){ /* offline: the cached list still works */ }
+  list.sort((a,b)=>String(a.name).localeCompare(String(b.name)));
+  sel.innerHTML='<option value="">Choose the customer this meeting is with...</option>'
+    + list.map(a=>'<option value="'+esc(a.id)+'">'+esc(a.name)+'</option>').join('')
+    + '<option value="__other">Not listed, type it in</option>';
+}
+function onAccountChange(){
+  const sel=document.getElementById('mAccount');
+  const other=document.getElementById('mAccountOther');
+  if(!sel||!other) return;
+  if(sel.value==='__other'){ other.classList.remove('hidden'); other.focus(); }
+  else other.classList.add('hidden');
+}
+function chosenAccount(){
+  const sel=document.getElementById('mAccount');
+  const other=document.getElementById('mAccountOther');
+  if(!sel) return null;
+  if(sel.value==='__other'){
+    const nm=(other&&other.value||'').trim();
+    return nm ? { id:'', name:nm } : null;
+  }
+  if(!sel.value) return null;
+  return { id:sel.value, name:sel.options[sel.selectedIndex].text };
+}
+/* returns false and explains why, if we should not start recording */
+function preRecordCheck(){
+  const acc=chosenAccount();
+  if(!acc){
+    showStatus('⚠ Choose the customer this meeting is with before recording. It is what files the meeting against the right account.','error');
+    try{ document.getElementById('mAccount').focus(); }catch(e){}
+    return false;
+  }
+  const c=document.getElementById('mConsent');
+  if(c && !c.checked){
+    showStatus('⚠ Confirm everyone present has agreed to being recorded. Recording without consent is a criminal offence in some countries.','error');
+    try{ c.focus(); }catch(e){}
+    return false;
+  }
+  return true;
+}
+/* stamped onto every meeting object, however it was created */
+function meetingContext(){
+  const acc=chosenAccount()||{id:'',name:''};
+  const c=document.getElementById('mConsent');
+  return {
+    account: acc.name,
+    accountId: acc.id,
+    consent: { given: !!(c&&c.checked), by: (ls(SKEY)? (JSON.parse(ls(SKEY)).speakerA||'') : ''), at: new Date().toISOString() }
+  };
+}
+function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
 function getProxy() { return (ls(PKEY)||DEFAULT_PROXY).trim().replace(/\/+$/,''); }
 
 /* ── PEOPLE / ROLES ─────────────────────────────────────────────────────────
@@ -794,6 +893,7 @@ let mediaRecorder=null, recChunks=[], recStream=null, recTimerInt=null, recStart
 
 async function toggleRecord() {
   if (mediaRecorder && mediaRecorder.state === 'recording') { stopRecording(); return; }
+  if (!preRecordCheck()) return;      // v3.6: customer + consent, before anything else
   // SAFEGUARD v4: guard against an accidental tap right after stopping — the stray
   // restart that silently overwrote a real recording. Require a deliberate confirm.
   if (recStopping || (Date.now()-recStopAt) < 4000) {
@@ -957,6 +1057,7 @@ async function runPipeline() {
     type:document.getElementById('mType').value,
     title:document.getElementById('mTitle').value||document.getElementById('mType').value,
     attendees:[...attendees], utterances:slimUtts(utterances), rawTranscript,
+    ...meetingContext(),      // v3.6: which customer, and the consent record
     summary:'(analysis pending — transcript checkpoint)', decisions:[], actions:[], properties:[], quotes:[],
     createdAt:new Date().toISOString(),
   });
@@ -975,9 +1076,11 @@ async function runPipeline() {
     type:document.getElementById('mType').value,
     title:document.getElementById('mTitle').value||document.getElementById('mType').value,
     attendees:[...attendees], utterances, rawTranscript,
+    ...meetingContext(),      // v3.6: which customer, and the consent record
     summary:analysis.summary||'', decisions:analysis.decisions||[],
     actions:(analysis.actions||[]).map(a=>({...a,done:false})),
     properties:analysis.properties||[], quotes:analysis.quotes||[],
+    multiMeeting:!!analysis.multiMeeting, bleedNote:analysis.bleedNote||'',
     createdAt:new Date().toISOString(),
   };
   await persistDraft(currentMeeting);       // SAFEGUARD: full draft checkpoint
@@ -1014,9 +1117,11 @@ async function runPipelineFromPaste() {
     type:document.getElementById('mType').value,
     title:document.getElementById('mTitle').value||document.getElementById('mType').value,
     attendees:[...attendees], utterances, rawTranscript:paste,
+    ...meetingContext(),      // v3.6: which customer, and the consent record
     summary:analysis.summary||'', decisions:analysis.decisions||[],
     actions:(analysis.actions||[]).map(a=>({...a,done:false})),
     properties:analysis.properties||[], quotes:analysis.quotes||[],
+    multiMeeting:!!analysis.multiMeeting, bleedNote:analysis.bleedNote||'',
     createdAt:new Date().toISOString(),
   };
   await persistDraft(currentMeeting);
@@ -1075,7 +1180,7 @@ function parseAnalysis(raw){
 async function analyzeTranscript(transcript,s) {
   const company=(s&&s.company)||'One Eye Industries';
   const context=(s&&s.context)||'Industrial contamination control and filtration solutions — One Eye Solutions, Black Powder Solutions, and CleanMud.';
-  const prompt=`You are analysing a business / customer meeting for ${company}. Context: ${context}\n\nTRANSCRIPT:\n${transcript}\n\nReturn ONLY a valid JSON object — no markdown, no preamble. Your entire reply must start with { and end with }:\n{"summary":"3-4 sentence executive summary","decisions":["Decision 1"],"actions":[{"task":"description","owner":"name or Both","due":"timeframe"}],"properties":["customer, account or product names discussed"],"quotes":[{"speaker":"name","quote":"verbatim max 20 words","context":"why notable"}]}`;
+  const prompt=`You are analysing a business / customer meeting for ${company}. Context: ${context}\n\nTRANSCRIPT:\n${transcript}\n\nRecordings sometimes run on past the end of a meeting and capture a second, unrelated conversation. Judge whether this transcript contains more than one distinct meeting or a clear change of customer or subject. If it does, set multiMeeting true and say in bleedNote where it changes and what the second part is about. Be conservative: a normal digression inside one meeting is NOT a second meeting.\n\nReturn ONLY a valid JSON object — no markdown, no preamble. Your entire reply must start with { and end with }:\n{"summary":"3-4 sentence executive summary","decisions":["Decision 1"],"actions":[{"task":"description","owner":"name or Both","due":"timeframe"}],"properties":["customer, account or product names discussed"],"quotes":[{"speaker":"name","quote":"verbatim max 20 words","context":"why notable"}],"multiMeeting":false,"bleedNote":""}`;
   const proxy=getProxy();
   if(proxy){
     const r=await fetch(proxy+'/analyze',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({prompt})});
@@ -1101,6 +1206,20 @@ function buildSpeakerMap(utterances,s){
 }
 
 function renderResults(m) {
+  // v3.6: if the analysis thinks the recording ran on into a second conversation,
+  // say so at the top. A bled transcript filed confidently against one customer is
+  // worse than one that is obviously unattributed.
+  try{
+    const w=document.getElementById('bleedWarn');
+    if(w){
+      if(m.multiMeeting){
+        w.innerHTML='<b>&#9888; This recording may contain more than one meeting.</b><br>'
+          + (m.bleedNote? esc(m.bleedNote)+'<br>' : '')
+          + 'Check it before it goes onto '+esc(m.account||'the account')+'. If a second conversation was captured, edit the transcript or record the two separately next time.';
+        w.classList.remove('hidden');
+      } else { w.classList.add('hidden'); }
+    }
+  }catch(e){}
   const tEl=document.getElementById('transcriptOut');
   if(m.utterances&&m.utterances.length&&m.utterances.length>1){
     tEl.innerHTML=m.utterances.map(u=>{
@@ -1199,7 +1318,7 @@ function renderLog(){
     return `<div class="meeting-card" onclick="loadMeeting('${m.id}')"><div class="mc-head"><div class="mc-title">${m.title||m.type}</div><div style="display:flex;gap:8px;align-items:center;flex-shrink:0;"><span class="mc-date">${fmtDate(m.date)}</span><button class="btn btn-ghost btn-xs" title="Executive report" onclick="event.stopPropagation();openReport('${m.id}')">📄</button><button class="btn btn-ghost btn-xs" title="Delete this meeting" onclick="event.stopPropagation();deleteMeeting('${m.id}')">🗑</button></div></div><div class="mc-summary">${(m.summary||'').substring(0,150)}…</div><div class="mc-tags"><span class="tag">${m.type}</span><span class="tag">${(m.attendees||[]).join(' · ')}</span>${open?`<span class="tag tag-open">${open} open action${open>1?'s':''}</span>`:''}</div></div>`;
   }).join('');
 }
-function loadMeeting(id){ const m=getMeetings().find(x=>x.id===id);if(!m)return;currentMeeting=m;lastSavedId=m.id;document.getElementById('mDate').value=m.date;document.getElementById('mType').value=m.type;document.getElementById('mTitle').value=m.title||'';renderResults(m);document.getElementById('resultsWrap').classList.remove('hidden');showTab('new');setTimeout(()=>document.getElementById('resultsWrap').scrollIntoView({behavior:'smooth'}),120); }
+function loadMeeting(id){ const m=getMeetings().find(x=>x.id===id);if(!m)return;currentMeeting=m;lastSavedId=m.id;document.getElementById('mDate').value=m.date;document.getElementById('mType').value=m.type;document.getElementById('mTitle').value=m.title||'';try{ const s=document.getElementById('mAccount'); if(s&&m.accountId) s.value=m.accountId; }catch(e){}renderResults(m);document.getElementById('resultsWrap').classList.remove('hidden');showTab('new');setTimeout(()=>document.getElementById('resultsWrap').scrollIntoView({behavior:'smooth'}),120); }
 async function deleteMeeting(id){
   if(!confirm('Delete this meeting permanently? This removes it for everyone on the team and cannot be undone. Consider Export All first.')) return;
   const all=getMeetings().filter(m=>m.id!==id); setMeetings(all);
